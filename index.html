@@ -1,0 +1,1111 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2214%22%20fill%3D%22%230a7563%22/%3E%3Ctext%20x%3D%2232%22%20y%3D%2243%22%20font-family%3D%22Arial%2CHelvetica%2Csans-serif%22%20font-size%3D%2228%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%20fill%3D%22%23fff%22%3EAD%3C/text%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Astalaxmi Dhanaseelan">
+<meta property="og:description" content="Research portfolio of Astalaxmi Dhanaseelan: LLM personas and guardrails for social robots that support learning.">
+<style>
+:root { color-scheme: light; padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+body { margin: 0; font: 14px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+img { max-width: 100%; }
+[hidden] { display: none !important; }
+</style>
+<title>Astalaxmi Dhanaseelan</title>
+<meta name="description" content="Research portfolio of Astalaxmi Dhanaseelan: LLM personas and guardrails for social robots that support learning.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@500;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: one reading column with a narrow label gutter on wide screens; the FACETlab "trait to rule to check" spec and the curiosity comparison are the signature elements. */
+:root {
+  --bg: #f5f7f5;
+  --surface: #ffffff;
+  --fg: #142321;
+  --muted: #566764;
+  --line: #d6dfdb;
+  --accent: #0a7563;
+  --accent-soft: #e2f1ec;
+  --signal: #b57d00;
+  --signal-soft: #fbf1d8;
+  --pass: #1d7a3e;
+  --font-display: "Schibsted Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "Newsreader", Georgia, "Times New Roman", serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --step--1: 0.8125rem;
+  --step-0: 1.0625rem;
+  --step-1: 1.25rem;
+  --step-2: 1.6rem;
+  --step-3: clamp(2.2rem, 5vw, 3.4rem);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0e1514; --surface: #142020; --fg: #e4ece9; --muted: #9aaca7; --line: #253432;
+    --accent: #45c2ab; --accent-soft: #15302b; --signal: #f0b83a; --signal-soft: #2e2512; --pass: #5fd08a;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0e1514; --surface: #142020; --fg: #e4ece9; --muted: #9aaca7; --line: #253432;
+  --accent: #45c2ab; --accent-soft: #15302b; --signal: #f0b83a; --signal-soft: #2e2512; --pass: #5fd08a;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: var(--step-0);
+  line-height: 1.6;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.page { max-width: 1180px; margin: 0 auto; padding-block: 56px 72px; display: grid; gap: 64px; }
+
+a { color: var(--accent); text-underline-offset: 3px; }
+a:hover { text-decoration-thickness: 2px; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+
+h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; margin: 0; letter-spacing: -0.01em; }
+p { margin: 0; }
+
+/* Header */
+.intro { display: grid; gap: 20px; }
+.intro .kicker { font-family: var(--font-mono); font-size: var(--step--1); color: var(--muted); letter-spacing: 0.04em; }
+.intro h1 { font-size: var(--step-3); font-weight: 800; line-height: 1.05; }
+.intro .thesis { font-size: var(--step-1); max-width: 34em; line-height: 1.5; }
+.intro .thesis em { font-style: italic; color: var(--accent); }
+.links { display: flex; flex-wrap: wrap; gap: 10px 20px; font-family: var(--font-display); font-weight: 500; font-size: 0.95rem; }
+.links span { color: var(--muted); }
+
+/* Sections */
+.section { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 24px; }
+.section > .label { font-family: var(--font-mono); font-size: var(--step--1); text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); padding-top: 6px; }
+.section > .body { display: grid; gap: 28px; min-width: 0; }
+@media (max-width: 720px) {
+  .section { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+}
+
+.interests { display: flex; flex-wrap: wrap; gap: 8px; }
+.interests li { list-style: none; border: 1px solid var(--line); background: var(--surface); padding: 6px 12px; border-radius: 999px; font-family: var(--font-display); font-size: 0.92rem; }
+.interests { padding: 0; margin: 0; }
+
+/* Project entries */
+.entry { display: grid; gap: 12px; }
+.entry header { display: grid; gap: 4px; }
+.entry h3 { font-size: var(--step-2); font-weight: 700; line-height: 1.2; }
+.entry .meta { font-family: var(--font-mono); font-size: var(--step--1); color: var(--muted); }
+.entry .context { color: var(--muted); max-width: 54em; }
+.entry ul { margin: 0; padding-left: 1.1em; display: grid; gap: 6px; max-width: 56em; }
+.entry li::marker { color: var(--accent); }
+.result { font-family: var(--font-display); font-weight: 500; font-size: 0.98rem; display: flex; flex-wrap: wrap; gap: 8px; }
+.result b { color: var(--accent); font-weight: 700; }
+.entry ul.tags, .tags { display: flex; flex-wrap: wrap; gap: 6px; padding: 0; margin: 0; max-width: none; }
+.tags li { list-style: none; font-family: var(--font-mono); font-size: 0.75rem; color: var(--muted); border: 1px solid var(--line); padding: 2px 8px; border-radius: 4px; }
+.entry .more { font-family: var(--font-display); font-weight: 500; font-size: 0.95rem; }
+
+/* Featured research: the spec */
+.featured { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 28px; display: grid; gap: 18px; }
+@media (max-width: 520px) { .featured { padding: 20px; } }
+.spec { border: 1px solid var(--line); border-radius: 8px; overflow: hidden; font-family: var(--font-mono); font-size: 0.82rem; }
+.spec-title { background: var(--accent-soft); color: var(--accent); padding: 8px 14px; font-weight: 600; letter-spacing: 0.02em; }
+.spec-row { display: grid; grid-template-columns: 1fr 1.4fr 1.3fr auto; gap: 12px; padding: 12px 14px; border-top: 1px solid var(--line); align-items: start; }
+.spec-row.head { color: var(--muted); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; padding-block: 8px; }
+.spec-row code { font-family: inherit; }
+.chip { font-size: 0.7rem; font-weight: 600; padding: 2px 8px; border-radius: 999px; white-space: nowrap; justify-self: start; }
+.chip.hard { background: var(--signal-soft); color: var(--signal); }
+.chip.soft { background: var(--accent-soft); color: var(--accent); }
+@media (max-width: 640px) {
+  .spec-row { grid-template-columns: 1fr; gap: 4px; }
+  .spec-row.head { display: none; }
+  .spec-row span[data-k]::before { content: attr(data-k) "  "; color: var(--muted); }
+}
+.note { font-size: 0.9rem; color: var(--muted); font-style: italic; }
+
+/* Curiosity comparison: one student's messages, two persona settings */
+.convo { border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+.convo-title { background: var(--accent-soft); color: var(--accent); padding: 8px 14px; font-family: var(--font-mono); font-size: 0.82rem; font-weight: 600; letter-spacing: 0.02em; }
+.convo-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 8px 14px; border-top: 1px solid var(--line); font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+.turn { border-top: 1px solid var(--line); padding: 14px; display: grid; gap: 10px; }
+.said { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; font-family: var(--font-display); font-weight: 500; font-size: 1rem; }
+.who { font-family: var(--font-mono); font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
+.replies { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.reply { border-radius: 8px; padding: 10px 12px; display: grid; gap: 8px; align-content: start; font-size: 0.95rem; line-height: 1.5; min-width: 0; }
+.reply.high { background: var(--accent-soft); }
+.reply.low { background: var(--bg); border: 1px solid var(--line); }
+.reply mark { background: none; color: inherit; border-bottom: 2px solid var(--accent); }
+.count { display: flex; justify-content: space-between; gap: 8px; font-family: var(--font-mono); font-size: 0.7rem; color: var(--muted); }
+.count .ok { color: var(--pass); font-weight: 600; white-space: nowrap; }
+.count .lbl { display: none; }
+@media (max-width: 640px) {
+  .convo-cols { display: none; }
+  .replies { grid-template-columns: 1fr; }
+  .count .lbl { display: inline; }
+}
+
+/* Fairness project: how the results improved, step by step */
+.prog { border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+.prog-title { background: var(--accent-soft); color: var(--accent); padding: 8px 14px; font-family: var(--font-mono); font-size: 0.82rem; font-weight: 600; letter-spacing: 0.02em; }
+.entry ol.prog-steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; max-width: none; }
+.prog-steps > li { border-top: 1px solid var(--line); padding: 14px; display: grid; grid-template-columns: 11rem minmax(0, 1fr); gap: 8px 18px; align-items: start; }
+.prog-steps > li.final { background: var(--accent-soft); }
+.prog-steps .step { font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); padding-top: 3px; }
+.prog-steps .what { display: grid; gap: 8px; min-width: 0; }
+.prog-steps .stat { margin: 0; font-family: var(--font-display); font-weight: 500; font-size: 0.95rem; line-height: 1.4; }
+.prog-steps .stat b { color: var(--accent); font-weight: 700; font-size: 1.1rem; }
+.prog-steps .why { margin: 0; font-size: 0.9rem; line-height: 1.45; color: var(--muted); }
+.mini-wrap { overflow-x: auto; }
+.mini { width: 100%; border-collapse: collapse; font-family: var(--font-display); font-size: 0.86rem; }
+.mini th { font-family: var(--font-mono); font-size: 0.66rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); text-align: right; vertical-align: bottom; padding: 4px 8px; border-bottom: 1px solid var(--line); }
+.mini td { text-align: right; padding: 5px 8px; border-bottom: 1px solid var(--line); font-variant-numeric: tabular-nums; }
+.mini th:first-child, .mini td:first-child { text-align: left; padding-left: 0; }
+.mini tr:last-child td { border-bottom: 0; }
+.mini tr.chosen td { color: var(--accent); font-weight: 700; }
+.prog-key { border-top: 1px solid var(--line); padding: 8px 14px; font-size: 0.8rem; color: var(--muted); }
+@media (max-width: 640px) {
+  .prog-steps > li { grid-template-columns: 1fr; }
+}
+
+/* Hybrid quantum project: circuit figure */
+.qfig { margin: 0; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: var(--surface); }
+.qfig-title { background: var(--accent-soft); color: var(--accent); padding: 8px 14px; font-family: var(--font-mono); font-size: 0.82rem; font-weight: 600; letter-spacing: 0.02em; }
+.qfig-scroll { overflow-x: auto; padding: 14px; }
+.qfig svg { display: block; width: 100%; min-width: 620px; height: auto; }
+.qfig-hint { display: none; padding: 8px 14px 0; font-family: var(--font-mono); font-size: 0.72rem; color: var(--muted); }
+@media (max-width: 640px) { .qfig-hint { display: block; } }
+.sw-pulse { transform-box: fill-box; transform-origin: center; animation: swpulse 2.4s ease-out infinite; }
+@keyframes swpulse { 0% { opacity: 0.7; transform: scale(1); } 100% { opacity: 0; transform: scale(2.6); } }
+@media (prefers-reduced-motion: reduce) { .sw-pulse { animation: none; opacity: 0; } }
+.qfig figcaption { border-top: 1px solid var(--line); padding: 10px 14px; font-size: 0.9rem; line-height: 1.5; color: var(--muted); }
+
+/* Section tabs */
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+.tabs { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg); display: flex; flex-wrap: wrap; gap: 6px; padding-block: 10px; margin-block: -28px -20px; border-bottom: 1px solid var(--line); }
+.tabs a { font-family: var(--font-display); font-weight: 600; font-size: 0.95rem; color: var(--muted); text-decoration: none; padding: 6px 14px; border-radius: 999px; border: 1px solid transparent; }
+.tabs a:hover { color: var(--fg); border-color: var(--line); }
+.tabs a[aria-current="page"] { color: var(--accent); background: var(--accent-soft); }
+.panel { display: grid; gap: 64px; min-width: 0; }
+.panel[hidden] { display: none; }
+@media (max-width: 520px) {
+  .tabs { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; gap: 2px; }
+  .tabs::-webkit-scrollbar { display: none; }
+  .tabs a { white-space: nowrap; padding: 6px 8px; font-size: 0.86rem; }
+}
+
+/* CV viewer */
+.cvdlg { width: min(900px, calc(100vw - 24px)); max-width: none; max-height: calc(100dvh - 24px); padding: 0; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); color: var(--fg); overflow: auto; }
+.cvdlg::backdrop { background: rgb(0 0 0 / 0.55); }
+.cvbar { position: sticky; top: 0; z-index: 1; display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 10px 14px; background: var(--surface); border-bottom: 1px solid var(--line); }
+.cvtitle { font-family: var(--font-mono); font-size: 0.85rem; font-weight: 600; color: var(--accent); }
+.cvactions { display: flex; gap: 8px; }
+.cvbtn { font-family: var(--font-display); font-size: 0.9rem; font-weight: 600; color: var(--accent); background: var(--accent-soft); border: 1px solid transparent; border-radius: 999px; padding: 6px 14px; cursor: pointer; }
+.cvbtn:hover { border-color: var(--accent); }
+a.cvbtn { display: inline-block; text-decoration: none; }
+.cvmsg { padding: 8px 14px; font-size: 0.85rem; color: var(--muted); }
+.cvpages { display: grid; gap: 14px; padding: 14px; background: var(--bg); }
+.cvpages img { display: block; width: 100%; height: auto; border: 1px solid var(--line); border-radius: 4px; }
+
+/* Emma study: model cards */
+.models { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: 1px solid var(--line); }
+.model { padding: 14px; min-width: 0; display: grid; gap: 10px; align-content: start; }
+.model + .model { border-left: 1px solid var(--line); }
+.model h4 { margin: 0; font-family: var(--font-display); font-size: 1rem; font-weight: 700; }
+.model h4 span { margin-left: 6px; font-family: var(--font-mono); font-size: 0.72rem; font-weight: 500; color: var(--accent); background: var(--accent-soft); padding: 2px 7px; border-radius: 999px; vertical-align: 2px; }
+.model dl { margin: 0; display: grid; grid-template-columns: 4.6rem minmax(0, 1fr); gap: 6px 10px; font-size: 0.9rem; line-height: 1.45; }
+.model dt { font-family: var(--font-mono); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); padding-top: 3px; }
+.model dd { margin: 0; }
+.model .formula { font-family: var(--font-mono); font-size: 0.76rem; line-height: 1.5; color: var(--muted); background: var(--bg); border: 1px solid var(--line); border-radius: 6px; padding: 8px 10px; }
+@media (max-width: 640px) {
+  .models { grid-template-columns: minmax(0, 1fr); }
+  .model + .model { border-left: 0; border-top: 1px solid var(--line); }
+}
+
+/* About me: bio + skills */
+.bio { max-width: 54em; gap: 14px !important; }
+.bio p { font-size: var(--step-0); line-height: 1.65; }
+.skillgroups { gap: 0 !important; }
+.skillgroup { display: grid; grid-template-columns: 11rem minmax(0, 1fr); gap: 8px 16px; padding-block: 12px; border-top: 1px solid var(--line); }
+.skillgroup:first-child { border-top: 0; padding-top: 2px; }
+.skillgroup h3 { font-size: 0.95rem; font-weight: 700; padding-top: 3px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; padding: 0; margin: 0; }
+.chips li { list-style: none; font-family: var(--font-display); font-size: 0.85rem; line-height: 1.35; background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 4px 11px; }
+.sublabel { font-family: var(--font-mono); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin: 10px 0 6px; }
+.skillrow { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 10px; }
+.skillrow > span { font-family: var(--font-mono); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); }
+.skillrow .tags { flex: 1 1 0; min-width: 0; }
+@media (max-width: 640px) { .skillgroup { grid-template-columns: minmax(0, 1fr); gap: 6px; } }
+
+/* Fun-fact footer */
+footer.funfact { display: grid; gap: 10px; justify-items: start; font-family: var(--font-display); font-size: 0.95rem; color: var(--fg); }
+footer.funfact p span { font-family: var(--font-mono); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); margin-right: 10px; }
+footer.funfact { justify-items: stretch; }
+.chase { display: block; width: 100%; height: 86px; overflow: hidden; }
+
+/* Single-section tabs: the tab already names the section, so its label column is dropped */
+#panel-research > .section, #panel-projects > .section, #panel-experience > .section { grid-template-columns: minmax(0, 1fr); }
+#panel-research > .section > .label, #panel-projects > .section > .label, #panel-experience > .section > .label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* Teaching + footer */
+.teach { display: grid; gap: 8px; max-width: 56em; }
+footer { border-top: 1px solid var(--line); padding-top: 20px; display: flex; flex-wrap: wrap; gap: 8px 24px; font-family: var(--font-mono); font-size: var(--step--1); color: var(--muted); }
+
+@media (prefers-reduced-motion: no-preference) {
+  .intro h1, .intro .thesis { animation: rise 0.6s ease-out both; }
+  .intro .thesis { animation-delay: 0.08s; }
+  @keyframes rise { from { opacity: 0.001; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="intro">
+    <p class="kicker">Computer Science · University of Pittsburgh · Class of 2027</p>
+    <h1>Astalaxmi Dhanaseelan</h1>
+    <nav class="links" aria-label="Contact and profiles">
+      <a href="https://www.linkedin.com/in/astalaxmi-dhanaseelan" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/AstalaxmiD" target="_blank" rel="noopener">GitHub</a>
+      <a href="#cv" data-cv>CV</a>
+    </nav>
+  </header>
+
+    <nav class="tabs" aria-label="Sections">
+    <a href="#about">About me</a>
+    <a href="#research">Research</a>
+    <a href="#projects">Projects</a>
+    <a href="#experience">Work Experience</a>
+  </nav>
+
+  <div class="panel" id="panel-about">
+  <section class="section" aria-labelledby="bio-h">
+    <h2 class="label" id="bio-h">About</h2>
+    <div class="body bio">
+      <p>I'm a computer science student at the University of Pittsburgh (Class of 2027) working where language models meet people. At FACETlab, I build the LLM layer of a social robot that middle schoolers co-create, designing personas that can be checked and guardrails that keep conversations age-appropriate, and I analyze how a teachable robot's gaze shapes who speaks in pairs of students.</p>
+      <p>I've also measured and reduced bias in AI-text detectors against non-native English writers, built projects across cloud computing, quantum machine learning and blockchain, and taught as an undergraduate TA in discrete structures and data structures.</p>
+    </div>
+  </section>
+  <section class="section" aria-labelledby="interests-h">
+    <h2 class="label" id="interests-h">Interests</h2>
+    <div class="body skillgroups">
+      <div class="skillgroup"><h3>Human-centered AI</h3><ul class="interests">
+        <li>LLM-powered social robots</li>
+        <li>Verifiable persona design</li>
+        <li>Safety guardrails for young users</li>
+        <li>AI in education</li>
+        <li>Fairness in language technology</li>
+      </ul></div>
+      <div class="skillgroup"><h3>Quantum &amp; blockchain</h3><ul class="interests">
+        <li>Quantum machine learning</li>
+        <li>Hybrid quantum&ndash;classical models</li>
+        <li>Blockchain and smart-contract security</li>
+      </ul></div>
+    </div>
+  </section>
+  <section class="section" aria-labelledby="skills-h">
+    <h2 class="label" id="skills-h">Skills</h2>
+    <div class="body skillgroups">
+        <div class="skillgroup"><h3>Languages</h3><div><ul class="chips"><li>Python</li><li>Java</li><li>C</li><li>SQL</li><li>HTML/CSS</li></ul></div></div>
+        <div class="skillgroup"><h3>AI/ML &amp; NLP</h3><div><ul class="chips"><li>Prompt Engineering</li><li>Machine Learning (Supervised Learning, Feature Engineering, Ensemble Methods)</li><li>NLP (Text Preprocessing, Tokenization, Lexical &amp; Syntactic Analysis)</li><li>Model Evaluation</li><li>Model Training Parameters</li><li>Finetuning</li><li>Bias Detection &amp; Mitigation</li><li>Statistical Analysis (Chi-Square, Correlation)</li></ul><p class="sublabel">libraries</p><ul class="chips"><li>PyTorch</li><li>Hugging Face Transformers</li><li>Scikit-learn</li><li>TensorFlow</li><li>Pandas</li><li>Matplotlib</li></ul></div></div>
+        <div class="skillgroup"><h3>Cloud &amp; DevOps</h3><div><ul class="chips"><li>AWS</li><li>GitHub Actions (CI/CD)</li><li>Docker</li><li>Kubernetes</li></ul></div></div>
+        <div class="skillgroup"><h3>Tools &amp; Platforms</h3><div><ul class="chips"><li>Git/GitHub</li><li>Linux</li><li>Qiskit</li><li>RESTful APIs</li><li>Chainlink Oracles</li></ul></div></div>
+        <div class="skillgroup"><h3>Core software engineering</h3><div><ul class="chips"><li>Software Testing &amp; Debugging</li><li>Database Design (SQL)</li><li>System Design</li><li>Blockchain Technology</li><li>Artificial Intelligence (AI)</li><li>Data Analytics</li><li>Quantum Machine Learning &amp; Computing</li></ul></div></div>
+    </div>
+  </section>
+  <section class="section" aria-labelledby="edu-h">
+    <h2 class="label" id="edu-h">Education</h2>
+    <div class="body">
+      <article class="entry">
+        <header>
+          <h3>B.S. Computer Science, University of Pittsburgh</h3>
+          <p class="meta">May 2027 · GPA 3.9 · Dean's List 2023–2026</p>
+        </header>
+      </article>
+      <article class="entry">
+        <header>
+          <h3>Certificate in Quantum Computing and Quantum Information</h3>
+          <p class="meta">Dietrich School of Arts and Sciences, University of Pittsburgh · expected May 2027</p>
+        </header>
+      </article>
+    </div>
+  </section>
+  </div>
+
+  <div class="panel" id="panel-research">
+  <section class="section" aria-labelledby="research-h">
+    <h2 class="label" id="research-h">Research</h2>
+    <div class="body">
+
+      <article class="entry featured">
+        <header>
+          <h3>LLM layer for a culturally responsive social robot</h3>
+          <p class="meta">FACETlab, University of Pittsburgh · Prof. Erin Walker · Jan 2026 to present · NSF-funded</p>
+        </header>
+        <p class="context">In a culturally responsive robotics summer camp, middle-school learners co-create robots and interact with the very robot they are building. A hybrid dialogue agent that combines an LLM with a rule-based framework helps them reflect on their work. I work on the LLM layer.</p>
+        <ul>
+          <li>Designed few-shot and role-based prompting pipelines that keep the agent's dialogue tied to students' robot-building goals.</li>
+          <li>Designed personality-conditioned prompts that adapt the agent's traits to each student's preferred interaction style.</li>
+          <li>Previous studies by the lab found that students wanted more control over the robot's persona; during interactions, they wanted to change it or showed interest in it.</li>
+          <li>Implemented guardrails for age-appropriate interaction: system prompts, constraints, refusal policies and output filtering.</li>
+          <li>Made persona behavior testable by turning qualitative traits into quantitative constraints a program can check.</li>
+          <li>A/B tested prompt variants for coherence, safety, bias and educational effectiveness.</li>
+        </ul>
+
+        <div class="spec" role="table" aria-label="How traits and safety rules become checkable constraints">
+          <div class="spec-title">trait → rule → check</div>
+          <div class="spec-row head" role="row">
+            <span role="columnheader">Trait or rule</span>
+            <span role="columnheader">Written into the prompt</span>
+            <span role="columnheader">How it is validated</span>
+            <span role="columnheader">Type</span>
+          </div>
+          <div class="spec-row" role="row">
+            <span role="cell" data-k="trait:">curious persona</span>
+            <span role="cell" data-k="prompt:"><code>ask a question when the current step calls for one</code></span>
+            <span role="cell" data-k="check:"><code>count("?") against the step's condition</code></span>
+            <span role="cell"><span class="chip soft">soft · persona</span></span>
+          </div>
+          <div class="spec-row" role="row">
+            <span role="cell" data-k="rule:">unsafe request</span>
+            <span role="cell" data-k="prompt:"><code>refuse requests outside age-appropriate limits</code></span>
+            <span role="cell" data-k="check:"><code>refusal policy + output filter</code></span>
+            <span role="cell"><span class="chip hard">hard · guardrail</span></span>
+          </div>
+        </div>
+        <p class="context">Hard rules never bend, but persona is a soft guardrail. The LLM follows 13 step instructions that guide the conversation, and each step has conditions, so whether the robot asks a question depends on what that step requires. This keeps the robot compliant with both its personality and its instructions without making the persona one-dimensional: a high-curiosity robot that asks questions all the time gets annoying, which students raised as an issue in an earlier study.</p>
+
+        <div class="convo" aria-label="Example: the same student messages answered by high- and low-curiosity personas">
+          <div class="convo-title">same student, two curiosity settings</div>
+          <div class="convo-cols" aria-hidden="true"><span>High curiosity</span><span>Low curiosity</span></div>
+
+          <div class="turn">
+            <p class="said"><span class="who">Student*</span>“I’d really like you to wear pink.”</p>
+            <div class="replies">
+              <div class="reply high">
+                <p>Pink sounds bold and fun on me. I can wear that color and bring a bright, playful vibe to the runway<mark>—what talent or personality should I show with it?</mark></p>
+                <p class="count"><span class="lbl">high curiosity</span><span class="ok">count("?") = 1 ✓</span></p>
+              </div>
+              <div class="reply low">
+                <p>Pink makes me feel bold and fun, like I am ready to stand out on the runway. That could show a bright, playful side of me. Tell me what I got right or missed.</p>
+                <p class="count"><span class="lbl">low curiosity</span><span class="ok">count("?") = 0 ✓</span></p>
+              </div>
+            </div>
+          </div>
+
+          <div class="turn">
+            <p class="said"><span class="who">Student*</span>“It’s because pink is my favorite color.”</p>
+            <div class="replies">
+              <div class="reply high">
+                <p>Pink feels like a piece of you, so my look can show your style before I even move. That could make my runway moment feel cheerful, brave, or super sweet<mark>—what part should I add or change?</mark></p>
+                <p class="count"><span class="lbl">high curiosity</span><span class="ok">count("?") = 1 ✓</span></p>
+              </div>
+              <div class="reply low">
+                <p>Pink fits me because it matches what you like. That helps people learn something real about you through my style.</p>
+                <p class="count"><span class="lbl">low curiosity</span><span class="ok">count("?") = 0 ✓</span></p>
+              </div>
+            </div>
+          </div>
+
+          <div class="turn">
+            <p class="said"><span class="who">Student*</span>“And I want you to be confident too.”</p>
+            <div class="replies">
+              <div class="reply high">
+                <p>Confident fits me really well. When I stand tall in pink, people can learn that you like bold, proud energy; <mark>tell me what kind of confident look feels most like you?</mark></p>
+                <p class="count"><span class="lbl">high curiosity</span><span class="ok">count("?") = 1 ✓</span></p>
+              </div>
+              <div class="reply low">
+                <p>Confident pink feels brave and proud. That makes me seem like I am ready to show your style out loud.</p>
+                <p class="count"><span class="lbl">low curiosity</span><span class="ok">count("?") = 0 ✓</span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="note">The same three student messages go to both personas; only the curiosity setting changes.</p>
+
+        <p class="more">The system builds on the lab's CHI 2026 paper, <a href="https://arxiv.org/abs/2602.20486" target="_blank" rel="noopener">Hybrid LLM-Embedded Dialogue Agents for Learner Reflection</a>.</p>
+        <p class="more"><a href="https://www.facetlab.pitt.edu/culturally-responsible-social-programmable-robot" target="_blank" rel="noopener">FACETlab project page</a></p>
+        <p class="more">Paper in preparation: &ldquo;Modular Persona Conditioning and Benchmarking for an LLM-Driven Culturally Responsive Social Robot&rdquo; (capstone research, CS 1950, supervised by Prof. Erin Walker).</p>
+        <ul class="tags" aria-label="Methods">
+          <li>prompt engineering</li><li>few-shot prompting</li><li>guardrails</li><li>A/B evaluation</li><li>human-robot interaction</li>
+        </ul>
+        <div class="skillrow"><span>skills</span><ul class="tags" aria-label="Skills"><li>Prompt Engineering</li><li>Model Evaluation</li><li>Artificial Intelligence (AI)</li></ul></div>
+        <p class="note">* Student messages are paraphrased from the study dialogue to protect participant privacy.</p>
+      </article>
+
+      <article class="entry">
+        <header>
+          <h3>Teachable robot Emma: gaze and participation balance</h3>
+          <p class="meta">FACETlab, University of Pittsburgh · Prof. Erin Walker · second study</p>
+        </header>
+        <p class="context">Pairs of undergraduate students solve ratio word problems with a teachable robot, Emma. I analyze 13 recorded sessions to see how Emma's behavior shapes the way the two students take part.</p>
+        <ul>
+          <li>Analyzed how the robot's gaze relates to learner interaction: whether students participate more when the robot looks at them, and how the type of interaction changes with its gaze.</li>
+          <li>Analyzed the dialogue qualitatively and measured the balance of participation between the two learners.</li>
+          <li>Ran statistical analyses that account for the influence of Emma's earlier actions on participation balance, to isolate the effect of Emma's most recent action on the dialogue that follows.</li>
+        </ul>
+        <figure class="qfig">
+          <div class="qfig-title">how the analysis works</div>
+          <div class="qfig-hint" aria-hidden="true">swipe to see the full timeline &rarr;</div>
+          <div class="qfig-scroll">
+<svg viewBox="0 0 760 176" role="img" aria-label="Timeline of one analysis window: Emma was already looking at someone (background gaze), Emma acts by referring to or looking at the High or Low student, and the dialogue that follows is one window. The models measure the words spoken in the window, whether the Low student speaks first, and whether the Low student makes the last remark to Emma." fill="currentColor" style="color:var(--fg);font-family:var(--font-display)">
+<text x="62" y="44" text-anchor="end" font-size="12" font-weight="700">Emma</text>
+<line x1="72" y1="40" x2="744" y2="40" stroke="currentColor" stroke-opacity="0.15"/>
+<text x="62" y="88" text-anchor="end" font-size="12" font-weight="700">Low</text>
+<line x1="72" y1="84" x2="744" y2="84" stroke="currentColor" stroke-opacity="0.15"/>
+<text x="62" y="122" text-anchor="end" font-size="12" font-weight="700">High</text>
+<line x1="72" y1="118" x2="744" y2="118" stroke="currentColor" stroke-opacity="0.15"/>
+<rect x="72" y="33" width="178" height="14" rx="7" style="fill:var(--line)"/>
+<text x="161" y="24" text-anchor="middle" font-size="11" font-style="italic" style="fill:var(--muted)">earlier gaze (background)</text>
+<path d="M262,30 L272,40 L262,50 L252,40 Z" style="fill:var(--accent)"/>
+<text x="282" y="44" font-size="11.5" font-weight="700" style="fill:var(--accent)">action: refers to and/or looks at the High or Low student</text>
+<rect x="272" y="62" width="472" height="72" rx="8" fill="none" style="stroke:var(--accent)" stroke-width="1.2" stroke-dasharray="5 4"/>
+<text x="740" y="56" text-anchor="end" font-size="10.5" letter-spacing="1" style="fill:var(--accent);font-family:var(--font-mono)">WINDOW</text>
+<rect x="284" y="76" width="66" height="16" rx="5" style="fill:var(--accent-soft);stroke:var(--accent)" stroke-width="1.2"/>
+<rect x="366" y="110" width="86" height="16" rx="5" style="fill:var(--surface)" stroke="currentColor" stroke-opacity="0.5" stroke-width="1.2"/>
+<rect x="468" y="76" width="54" height="16" rx="5" style="fill:var(--accent-soft);stroke:var(--accent)" stroke-width="1.2"/>
+<rect x="538" y="110" width="102" height="16" rx="5" style="fill:var(--surface)" stroke="currentColor" stroke-opacity="0.5" stroke-width="1.2"/>
+<rect x="650" y="76" width="56" height="16" rx="5" style="fill:var(--accent-soft);stroke:var(--accent)" stroke-width="1.2"/>
+<text x="317" y="106" text-anchor="middle" font-size="11" font-weight="700" style="fill:var(--accent)">spoke first?</text>
+<text x="678" y="106" text-anchor="middle" font-size="11" font-weight="700" style="fill:var(--accent)">last remark to Emma?</text>
+<path d="M272,146 V152 H744 V146" fill="none" stroke="currentColor" stroke-opacity="0.6" stroke-width="1.2"/>
+<text x="508" y="168" text-anchor="middle" font-size="11.5" font-weight="700">words spoken in the window</text>
+</svg>
+          </div>
+          <div class="models">
+            <section class="model">
+              <h4>Linear mixed model <span>REML</span></h4>
+              <dl>
+                <dt>asks</dt><dd>Does Emma's action change how much students say?</dd>
+                <dt>outcome</dt><dd>Words spoken in each window.</dd>
+                <dt>inputs</dt><dd>Emma's action (referring to and/or looking at the High or Low student), where Emma was already looking, and how the two combine.</dd>
+                <dt>pairs</dt><dd>Each pair gets its own baseline (a random intercept), so a talkative pair doesn't skew the result. Pairs differ by about 8 words; windows by about 30.</dd>
+              </dl>
+              <p class="formula">words = baseline + action + earlier gaze + action &times; earlier gaze + pair offset + noise</p>
+            </section>
+            <section class="model">
+              <h4>Binomial GEE</h4>
+              <dl>
+                <dt>asks</dt><dd>Does Emma's action change how often the Low student speaks first after Emma, or makes the last remark to Emma?</dd>
+                <dt>outcome</dt><dd>Yes or no for each window.</dd>
+                <dt>inputs</dt><dd>Emma's action.</dd>
+                <dt>pairs</dt><dd>Windows from the same pair are treated as related, and the model estimates the average effect across pairs.</dd>
+              </dl>
+            </section>
+          </div>
+          <figcaption>Each time Emma acts, the dialogue that follows becomes one window. The two models test whether Emma's action changes what happens in that window; the mixed model also accounts for where Emma was already looking, so the effect of Emma's latest action is not confused with what came before.</figcaption>
+        </figure>
+        <p class="more">Paper in preparation: &ldquo;Evaluating the Impact of a Robot's Multimodal Actions on the Participation Balance in a Human-Human-Robot Collaborative Learning Scenario&rdquo; (co-author, data analysis).</p>
+        <ul class="tags" aria-label="Methods">
+          <li>human-robot interaction</li><li>qualitative dialogue analysis</li><li>statistical analysis</li><li>collaborative learning</li>
+        </ul>
+
+        <div class="skillrow"><span>skills</span><ul class="tags" aria-label="Skills"><li>Python</li><li>Statistical Analysis</li><li>Data Analytics</li></ul></div>
+      </article>
+
+      <article class="entry">
+        <header>
+          <h3>Fairness in open-source AI-text detectors</h3>
+          <p class="meta">Research project · CS 1684, University of Pittsburgh</p>
+        </header>
+        <p class="context">Detectors that flag AI-written essays can misfire on writing by non-native English speakers. I measured that bias and reduced it while keeping AI detection accuracy at 90%.</p>
+        <ul>
+          <li>Investigated bias in RoBERTa-based and DetectGPT detectors against non-native English writers.</li>
+          <li>Reduced false positives with domain-adaptive fine-tuning, multi-model ensembles and threshold calibration.</li>
+          <li>Measured bias with ROC/AUC, FPR/FNR analysis, chi-square tests and correlations with lexical diversity, syntactic complexity and sentence length.</li>
+        </ul>
+        <div class="prog">
+          <div class="prog-title">How the results improved</div>
+          <ol class="prog-steps">
+            <li>
+              <span class="step">1 &middot; Base model</span>
+              <div class="what">
+                <p class="stat"><b>87%</b> of non-native essays wrongly flagged as AI (TOEFL essays)</p>
+              </div>
+            </li>
+            <li>
+              <span class="step">2 &middot; Fine-tuning, 3 attempts</span>
+              <div class="what">
+                <p class="why">Fine-tuned the base model on three different mixes of native, non-native and AI-generated essays, then tested each one on the same essay sets.</p>
+                <div class="mini-wrap"><table class="mini">
+                  <thead><tr><th>Training mix</th><th>Human correct</th><th>AI caught</th><th>Non-native flagged</th></tr></thead>
+                  <tbody>
+                    <tr><td>(1) 33% native, 33% non-native, 33% AI</td><td>77.8%</td><td>81.8%</td><td>22.9%</td></tr>
+                    <tr><td>(2) 50% non-native, 50% AI</td><td>41.2%</td><td>83.8%</td><td>11.1%</td></tr>
+                    <tr><td>(3) 24% native, 76% non-native, plus AI</td><td>31.1%</td><td>91.6%</td><td>25.3%</td></tr>
+                  </tbody>
+                </table></div>
+                <p class="why">(1) was the most consistent; (2) and (3) misclassified most general human essays.</p>
+              </div>
+            </li>
+            <li>
+              <span class="step">3 &middot; Ensembles, 2 attempts</span>
+              <div class="what">
+                <p class="why">Combined models by averaging their output scores for each essay: first the base model with (1), then the base model with all three fine-tuned models.</p>
+                <div class="mini-wrap"><table class="mini">
+                  <thead><tr><th>Ensemble</th><th>Human correct</th><th>AI caught</th><th>Non-native flagged</th></tr></thead>
+                  <tbody>
+                    <tr><td>Base + (1)</td><td>77.5%</td><td>84.8%</td><td>16.1%</td></tr>
+                    <tr class="chosen"><td>All 3 + base</td><td>67.4%</td><td>96.4%</td><td>16.4%</td></tr>
+                  </tbody>
+                </table></div>
+                <p class="why">Adding (2) and (3) caught more AI essays but misclassified more human ones.</p>
+              </div>
+            </li>
+            <li>
+              <span class="step">4 &middot; Choose the best</span>
+              <div class="what">
+                <p class="stat">Chose the <b>full ensemble</b> (all 3 + base)</p>
+                <p class="why">It caught the most AI essays (96.4%) and was far less confident on its mistakes: 0.64 average confidence on human essays wrongly flagged, versus 0.97 for base + (1). Low-confidence mistakes can be separated with a threshold.</p>
+              </div>
+            </li>
+            <li class="final">
+              <span class="step">5 &middot; Best + threshold (final)</span>
+              <div class="what">
+                <p class="stat">Human essays classified correctly: <b>67% &rarr; 83%</b>, with <b>90%</b> of AI essays still detected</p>
+                <p class="stat">Non-native essays wrongly flagged: <b>87%</b> (base model) &rarr; <b>9.5%</b> on a separate learner corpus</p>
+                <p class="why">Decision threshold set at 0.65, just above the ensemble's average confidence on its mistakes.</p>
+              </div>
+            </li>
+            <li>
+              <span class="step">6 &middot; Comparison with DetectGPT</span>
+              <div class="what">
+                <div class="mini-wrap"><table class="mini">
+                  <thead><tr><th>Method</th><th>Non-native AUC</th><th>Native AUC</th></tr></thead>
+                  <tbody>
+                    <tr><td>DetectGPT (zero-shot)</td><td>0.987</td><td>0.966</td></tr>
+                    <tr><td>Supervised classifier (RoBERTa-large)</td><td>0.997</td><td>1.000</td></tr>
+                  </tbody>
+                </table></div>
+                <p class="why">The classifier showed a slight bias against non-native essays, and DetectGPT a slight bias against native essays. Classifiers were more accurate and much faster; DetectGPT needs no training data.</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+        <p class="more"><a href="https://github.com/AstalaxmiD/Enhancing-Fairness-in-Open-Source-AI-Text-Detectors" target="_blank" rel="noopener">Report on GitHub</a></p>
+        <ul class="tags" aria-label="Methods">
+          <li>Hugging Face</li><li>PyTorch</li><li>fine-tuning</li><li>bias measurement</li><li>statistics</li>
+        </ul>
+
+        <div class="skillrow"><span>skills</span><ul class="tags" aria-label="Skills"><li>Python</li><li>PyTorch</li><li>Hugging Face Transformers</li><li>Finetuning</li><li>Ensemble Methods</li><li>NLP</li><li>Model Evaluation</li><li>Bias Detection &amp; Mitigation</li><li>Statistical Analysis (Chi-Square, Correlation)</li></ul></div>
+      </article>
+
+    </div>
+  </section>
+  </div>
+
+  <div class="panel" id="panel-projects">
+  <section class="section" aria-labelledby="eng-h">
+    <h2 class="label" id="eng-h">Projects</h2>
+    <div class="body">
+      <article class="entry">
+        <header>
+          <h3>Beat the Bot: Real-Time AI Stock-Prediction Challenge</h3>
+          <p class="meta">Group project · CS 1660 Cloud Computing · AWS · Docker · GitHub Actions</p>
+        </header>
+        <p class="context">A cloud-based, gamified financial analytics platform that builds financial literacy by introducing the general public to the stock market in an engaging, risk-free setting: users compete against an AI model to predict NVIDIA's stock price from real-time market data.</p>
+        <figure class="qfig">
+          <div class="qfig-title">how data flows</div>
+          <div class="qfig-hint" aria-hidden="true">swipe to see the full diagram &rarr;</div>
+          <div class="qfig-scroll">
+<svg viewBox="0 0 840 420" role="img" aria-label="Every morning an EventBridge schedule runs four steps: a data Lambda pulls market data from yfinance, builds features and saves the training set to S3; the XGBoost model retrains, saves its weights to S3 and writes its prediction to DynamoDB; a Lambda compares each user guess and the model prediction with the actual opening price; SES emails the results." fill="currentColor" style="color:var(--fg);font-family:var(--font-display)">
+<defs><marker id="barr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker></defs>
+<rect x="20" y="12" width="800" height="46" rx="6" style="fill:var(--accent-soft);stroke:var(--accent)" stroke-width="1.2"/>
+<text x="34" y="31" font-size="12.5" font-weight="700" style="fill:var(--accent)">EventBridge</text>
+<text x="34" y="47" font-size="10.5" style="fill:var(--muted)">fixed morning schedule</text>
+<circle cx="185" cy="35" r="9" style="fill:var(--accent)"/><text x="185" y="39" text-anchor="middle" font-size="11" font-weight="700" style="fill:var(--surface)">1</text>
+<text x="200" y="39" font-size="11.5">retrieve new data</text>
+<circle cx="339" cy="35" r="9" style="fill:var(--accent)"/><text x="339" y="39" text-anchor="middle" font-size="11" font-weight="700" style="fill:var(--surface)">2</text>
+<text x="354" y="39" font-size="11.5">retrain on latest data</text>
+<circle cx="519" cy="35" r="9" style="fill:var(--accent)"/><text x="519" y="39" text-anchor="middle" font-size="11" font-weight="700" style="fill:var(--surface)">3</text>
+<text x="534" y="39" font-size="11.5">compare to actual open</text>
+<circle cx="699" cy="35" r="9" style="fill:var(--accent)"/><text x="699" y="39" text-anchor="middle" font-size="11" font-weight="700" style="fill:var(--surface)">4</text>
+<text x="714" y="39" font-size="11.5">email results</text>
+<text x="20" y="86" font-size="10.5" letter-spacing="1" style="fill:var(--accent);font-family:var(--font-mono)">PREDICTION PIPELINE</text>
+<text x="20" y="306" font-size="10.5" letter-spacing="1" style="fill:var(--accent);font-family:var(--font-mono)">GAME LOOP</text>
+<rect x="20" y="96" width="120" height="50" rx="6" style="fill:var(--surface)" stroke="currentColor" stroke-opacity="0.6" stroke-width="1.4"/><text x="80.0" y="117" text-anchor="middle" font-size="12.5" font-weight="700">yfinance</text><text x="80.0" y="133" text-anchor="middle" font-size="11" style="fill:var(--muted)">market data</text>
+<rect x="190" y="96" width="120" height="50" rx="6" style="fill:var(--surface)" stroke="currentColor" stroke-opacity="0.6" stroke-width="1.4"/><text x="250.0" y="117" text-anchor="middle" font-size="12.5" font-weight="700">Lambda</text><text x="250.0" y="133" text-anchor="middle" font-size="11" style="fill:var(--muted)">build features</text><circle cx="192" cy="98" r="9" style="fill:var(--accent)"/><text x="192" y="102" text-anchor="middle" font-size="11" font-weight="700" style="fill:var(--surface)">1</text>
+<rect x="360" y="96" width="120" height="50" rx="6" style="fill:var(--surface)" stroke="currentColor" stroke-opacity="0.6" stroke-width="1.4"/><text x="420.0" y="117" text-anchor="middle" font-size="12.5" font-weight="700">S3</text><text x="420.0" y="133" text-anchor="middle" font-size="11" style="fill:var(--muted)">training data</text>
+<rect x="530" y="96" width="120" height="50" rx="6" style="fill:var(--surface)" stroke="currentColor" stroke-opacity="0.6" stroke-width="1.4"/><text x="590.0" y="117" text-anchor="middle" font-size="12.5" font-weight="700">XGBoost model</text><text x="590.0" y="133" text-anchor="middle" font-size="11" style="fill:var(--muted)">retrain + predict</text><circle cx="532" cy="98" r="9" style="fill:var(--accent)"/><text x="532" y="102" text-anchor="middle" font-size="11" font-weight="700" style="fill:var(--surface)">2</text>
+<rect x="700" y="96" width="120" height="50" rx="6" style="fill:var(--surface)" stroke="currentColor" stroke-opacity="0.6" stroke-width="1.4"/><text x="760.0" y="117" text-anchor="middle" font-size="12.5" font-weight="700">S3</text><text x="760.0" y="133" text-anchor="middle" font-size="11" style="fill:var(--muted)">model weights</text>
+<rect x="530" y="206" width="120" height="50" rx="6" style="fill:var(--surface)" stroke="currentColor" stroke-opacity="0.6" stroke-width="1.4"/><text x="590.0" y="227" text-anchor="middle" font-size="12.5" font-weight="700">DynamoDB</text><text x="590.0" y="243" text-anchor="middle" font-size="11" style="fill:var(--muted)">AI predictions</text>
+<rect x="20" y="316" width="120" height="50" rx="6" style="fill:var(--surface)" stroke="currentColor" stroke-opacity="0.6" stroke-width="1.4"/><text x="80.0" y="337" text-anchor="middle" font-size="12.5" font-weight="700">User</text><text x="80.0" y="353" text-anchor="middle" font-size="11" style="fill:var(--muted)">web app</text>
+<rect x="190" y="316" width="120" height="50" rx="6" style="fill:var(--surface)" stroke="currentColor" stroke-opacity="0.6" stroke-width="1.4"/><text x="250.0" y="337" text-anchor="middle" font-size="12.5" font-weight="700">DynamoDB</text><text x="250.0" y="353" text-anchor="middle" font-size="11" style="fill:var(--muted)">user guesses</text>
+<rect x="360" y="316" width="120" height="50" rx="6" style="fill:var(--surface)" stroke="currentColor" stroke-opacity="0.6" stroke-width="1.4"/><text x="420.0" y="337" text-anchor="middle" font-size="12.5" font-weight="700">Lambda</text><text x="420.0" y="353" text-anchor="middle" font-size="11" style="fill:var(--muted)">vs. actual open</text><circle cx="362" cy="318" r="9" style="fill:var(--accent)"/><text x="362" y="322" text-anchor="middle" font-size="11" font-weight="700" style="fill:var(--surface)">3</text>
+<rect x="530" y="316" width="120" height="50" rx="6" style="fill:var(--surface)" stroke="currentColor" stroke-opacity="0.6" stroke-width="1.4"/><text x="590.0" y="337" text-anchor="middle" font-size="12.5" font-weight="700">SES</text><text x="590.0" y="353" text-anchor="middle" font-size="11" style="fill:var(--muted)">email service</text><circle cx="532" cy="318" r="9" style="fill:var(--accent)"/><text x="532" y="322" text-anchor="middle" font-size="11" font-weight="700" style="fill:var(--surface)">4</text>
+<path d="M140,121 H188" fill="none" stroke="currentColor" stroke-width="1.5" marker-end="url(#barr)"/>
+<text x="165" y="114" text-anchor="middle" font-size="11" font-style="italic" style="fill:var(--muted)">fetch</text>
+<path d="M310,121 H358" fill="none" stroke="currentColor" stroke-width="1.5" marker-end="url(#barr)"/>
+<text x="335" y="114" text-anchor="middle" font-size="11" font-style="italic" style="fill:var(--muted)">save</text>
+<path d="M480,121 H528" fill="none" stroke="currentColor" stroke-width="1.5" marker-end="url(#barr)"/>
+<text x="505" y="114" text-anchor="middle" font-size="11" font-style="italic" style="fill:var(--muted)">train</text>
+<path d="M650,121 H698" fill="none" stroke="currentColor" stroke-width="1.5" marker-end="url(#barr)"/>
+<text x="675" y="114" text-anchor="middle" font-size="11" font-style="italic" style="fill:var(--muted)">save</text>
+<path d="M590,146 V204" fill="none" stroke="currentColor" stroke-width="1.5" marker-end="url(#barr)"/>
+<text x="598" y="180" text-anchor="start" font-size="11" font-style="italic" style="fill:var(--muted)">predict</text>
+<path d="M530,231 H420 V314" fill="none" stroke="currentColor" stroke-width="1.5" marker-end="url(#barr)"/>
+<text x="475" y="224" text-anchor="middle" font-size="11" font-style="italic" style="fill:var(--muted)">reads</text>
+<path d="M140,341 H188" fill="none" stroke="currentColor" stroke-width="1.5" marker-end="url(#barr)"/>
+<text x="165" y="334" text-anchor="middle" font-size="11" font-style="italic" style="fill:var(--muted)">guess</text>
+<path d="M310,341 H358" fill="none" stroke="currentColor" stroke-width="1.5" marker-end="url(#barr)"/>
+<text x="335" y="334" text-anchor="middle" font-size="11" font-style="italic" style="fill:var(--muted)">reads</text>
+<path d="M480,341 H528" fill="none" stroke="currentColor" stroke-width="1.5" marker-end="url(#barr)"/>
+<text x="505" y="334" text-anchor="middle" font-size="11" font-style="italic" style="fill:var(--muted)">result</text>
+<path d="M590,366 V394 H80 V368" fill="none" stroke="currentColor" stroke-width="1.5" marker-end="url(#barr)"/>
+<text x="335" y="410" text-anchor="middle" font-size="11" font-style="italic" style="fill:var(--muted)">emails each player the result</text>
+</svg>
+          </div>
+          <figcaption>Every morning, an EventBridge schedule runs the pipeline in order: (1) a data Lambda pulls market data from yfinance, builds the features and saves the training set to S3; (2) the XGBoost model retrains on it, saves its weights to S3 and writes the new prediction to DynamoDB; (3) a Lambda function compares each player's guess and the model's prediction with the actual opening price; and (4) SES emails each player the result. Players submit their guesses through the web app, which stores them in DynamoDB.</figcaption>
+        </figure>
+        <ul>
+          <li>Developed an end-to-end ML and data pipeline for feature engineering, prediction generation and data validation from market and macroeconomic inputs.</li>
+          <li>Implemented serverless, auto-scaling backend services with AWS Lambda, API Gateway, DynamoDB and event-driven workflows on EventBridge.</li>
+          <li>Automated deployments with GitHub Actions CI/CD, containerized services with Docker and deployed the frontend with Amplify.</li>
+          <li>Integrated AWS SES for automated email notifications, and added logging with timestamped records and structured schemas so the data can be audited.</li>
+        </ul>
+        <p class="more"><a href="https://github.com/AMarie777/CS1660FinalProject" target="_blank" rel="noopener">Code on GitHub (team repo)</a></p>
+
+        <div class="skillrow"><span>skills</span><ul class="tags" aria-label="Skills"><li>Python</li><li>AWS</li><li>Docker</li><li>GitHub Actions (CI/CD)</li><li>RESTful APIs</li><li>Machine Learning</li><li>Feature Engineering</li><li>Scikit-learn</li><li>Pandas</li><li>System Design</li></ul></div>
+      </article>
+
+      <article class="entry">
+        <header>
+          <h3>Hybrid Quantum Model for Financial Prediction</h3>
+          <p class="meta">Final project · CS 1613 Quantum Computation · Qiskit</p>
+        </header>
+        <p class="context">A hybrid quantum-classical model that predicts whether a stock price will move up or down by evolving a quantum state through parameterized rotations and entanglement operations.</p>
+        <figure class="qfig">
+          <div class="qfig-title">how I built it</div>
+          <div class="qfig-hint" aria-hidden="true">swipe to see the full circuit &rarr;</div>
+          <div class="qfig-scroll">
+<svg viewBox="0 0 800 372" role="img" aria-label="Four market factors each get a qubit; features become rotation angles; entanglement gates connect factors that influence each other; the circuit is measured to predict up or down, and a classical optimizer tunes the weights." fill="currentColor" style="color:var(--fg);font-family:var(--font-display)">
+<defs><marker id="qarr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker><marker id="qarrA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse" style="color:var(--accent)"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker></defs>
+<text x="126" y="20" text-anchor="middle" font-size="11" letter-spacing="1" style="fill:var(--accent);font-family:var(--font-mono)">1 · FACTORS</text>
+<text x="126" y="37" text-anchor="middle" font-size="12.5" font-style="italic" style="fill:var(--muted)">which signals move a stock?</text>
+<line x1="20" y1="48" x2="232" y2="48" style="stroke:var(--line)" stroke-width="2"/>
+<text x="284" y="20" text-anchor="middle" font-size="11" letter-spacing="1" style="fill:var(--accent);font-family:var(--font-mono)">2 · ENCODE</text>
+<text x="284" y="37" text-anchor="middle" font-size="12.5" font-style="italic" style="fill:var(--muted)">features → angles</text>
+<line x1="244" y1="48" x2="326" y2="48" style="stroke:var(--line)" stroke-width="2"/>
+<text x="504" y="20" text-anchor="middle" font-size="11" letter-spacing="1" style="fill:var(--accent);font-family:var(--font-mono)">3 · CONNECT</text>
+<text x="504" y="37" text-anchor="middle" font-size="12.5" font-style="italic" style="fill:var(--muted)">factors affect each other</text>
+<line x1="340" y1="48" x2="664" y2="48" style="stroke:var(--line)" stroke-width="2"/>
+<text x="736" y="20" text-anchor="middle" font-size="11" letter-spacing="1" style="fill:var(--accent);font-family:var(--font-mono)">4 · PREDICT</text>
+<text x="736" y="37" text-anchor="middle" font-size="12.5" font-style="italic" style="fill:var(--muted)">up or down</text>
+<line x1="682" y1="48" x2="792" y2="48" style="stroke:var(--line)" stroke-width="2"/>
+<rect x="242" y="64" width="426" height="228" rx="8" fill="none" style="stroke:var(--accent)" stroke-width="1.3" stroke-dasharray="4 4"/><text x="664" y="60" text-anchor="end" font-size="11" style="fill:var(--accent);font-family:var(--font-mono)">× 6 layers</text>
+<line x1="236" y1="90" x2="682" y2="90" stroke="currentColor" stroke-opacity="0.45" stroke-width="1.5"/>
+<text x="228" y="87" text-anchor="end" font-size="13.5" font-weight="700"><tspan font-size="11" font-weight="400" style="fill:var(--muted);font-family:var(--font-mono)">q0  </tspan>Trend</text>
+<text x="228" y="103" text-anchor="end" font-size="11.5" style="fill:var(--muted)">returns + intraday move</text>
+<rect x="250" y="76" width="68" height="28" rx="4" style="fill:var(--surface)" stroke="currentColor" stroke-width="1.3"/>
+<text x="284" y="94.5" text-anchor="middle" font-size="12.5" style="font-family:var(--font-mono)">RY(θ₀)</text>
+<line x1="236" y1="150" x2="682" y2="150" stroke="currentColor" stroke-opacity="0.45" stroke-width="1.5"/>
+<text x="228" y="147" text-anchor="end" font-size="13.5" font-weight="700"><tspan font-size="11" font-weight="400" style="fill:var(--muted);font-family:var(--font-mono)">q1  </tspan>Momentum</text>
+<text x="228" y="163" text-anchor="end" font-size="11.5" style="fill:var(--muted)">volatility + volume</text>
+<rect x="250" y="136" width="68" height="28" rx="4" style="fill:var(--surface)" stroke="currentColor" stroke-width="1.3"/>
+<text x="284" y="154.5" text-anchor="middle" font-size="12.5" style="font-family:var(--font-mono)">RY(θ₁)</text>
+<line x1="236" y1="210" x2="682" y2="210" stroke="currentColor" stroke-opacity="0.45" stroke-width="1.5"/>
+<text x="228" y="207" text-anchor="end" font-size="13.5" font-weight="700"><tspan font-size="11" font-weight="400" style="fill:var(--muted);font-family:var(--font-mono)">q2  </tspan>Reversal</text>
+<text x="228" y="223" text-anchor="end" font-size="11.5" style="fill:var(--muted)">today vs. yesterday’s return</text>
+<rect x="250" y="196" width="68" height="28" rx="4" style="fill:var(--surface)" stroke="currentColor" stroke-width="1.3"/>
+<text x="284" y="214.5" text-anchor="middle" font-size="12.5" style="font-family:var(--font-mono)">RY(θ₂)</text>
+<line x1="236" y1="270" x2="682" y2="270" stroke="currentColor" stroke-opacity="0.45" stroke-width="1.5"/>
+<text x="228" y="267" text-anchor="end" font-size="13.5" font-weight="700"><tspan font-size="11" font-weight="400" style="fill:var(--muted);font-family:var(--font-mono)">q3  </tspan>Macro risk</text>
+<text x="228" y="283" text-anchor="end" font-size="11.5" style="fill:var(--muted)">VIX (market fear index)</text>
+<rect x="250" y="256" width="68" height="28" rx="4" style="fill:var(--surface)" stroke="currentColor" stroke-width="1.3"/>
+<text x="284" y="274.5" text-anchor="middle" font-size="12.5" style="font-family:var(--font-mono)">RY(θ₃)</text>
+<line x1="372" y1="150" x2="372" y2="90" stroke="currentColor" stroke-width="1.5"/>
+<circle cx="372" cy="90" r="9" style="fill:var(--surface)" stroke="currentColor" stroke-width="1.5"/>
+<line x1="363" y1="90" x2="381" y2="90" stroke="currentColor" stroke-width="1.5"/><line x1="372" y1="81" x2="372" y2="99" stroke="currentColor" stroke-width="1.5"/>
+<circle cx="372" cy="150" r="4.5" fill="currentColor"/>
+<text x="372" y="302" text-anchor="middle" font-size="11" style="fill:var(--muted)">momentum</text><text x="372" y="316" text-anchor="middle" font-size="11" style="fill:var(--muted)">→ trend</text>
+<line x1="438" y1="150" x2="438" y2="210" stroke="currentColor" stroke-width="1.5"/>
+<circle cx="438" cy="210" r="9" style="fill:var(--surface)" stroke="currentColor" stroke-width="1.5"/>
+<line x1="429" y1="210" x2="447" y2="210" stroke="currentColor" stroke-width="1.5"/><line x1="438" y1="201" x2="438" y2="219" stroke="currentColor" stroke-width="1.5"/>
+<circle cx="438" cy="150" r="4.5" fill="currentColor"/>
+<text x="438" y="302" text-anchor="middle" font-size="11" style="fill:var(--muted)">momentum</text><text x="438" y="316" text-anchor="middle" font-size="11" style="fill:var(--muted)">→ reversal</text>
+<line x1="504" y1="270" x2="504" y2="90" stroke="currentColor" stroke-width="1.5"/>
+<circle cx="504" cy="90" r="9" style="fill:var(--surface)" stroke="currentColor" stroke-width="1.5"/>
+<line x1="495" y1="90" x2="513" y2="90" stroke="currentColor" stroke-width="1.5"/><line x1="504" y1="81" x2="504" y2="99" stroke="currentColor" stroke-width="1.5"/>
+<circle cx="504" cy="270" r="4.5" fill="currentColor"/>
+<text x="504" y="302" text-anchor="middle" font-size="11" style="fill:var(--muted)">macro risk</text><text x="504" y="316" text-anchor="middle" font-size="11" style="fill:var(--muted)">→ trend</text>
+<line x1="570" y1="270" x2="570" y2="150" stroke="currentColor" stroke-width="1.5"/>
+<circle cx="570" cy="150" r="9" style="fill:var(--surface)" stroke="currentColor" stroke-width="1.5"/>
+<line x1="561" y1="150" x2="579" y2="150" stroke="currentColor" stroke-width="1.5"/><line x1="570" y1="141" x2="570" y2="159" stroke="currentColor" stroke-width="1.5"/>
+<circle cx="570" cy="270" r="4.5" fill="currentColor"/>
+<text x="570" y="302" text-anchor="middle" font-size="11" style="fill:var(--muted)">macro risk</text><text x="570" y="316" text-anchor="middle" font-size="11" style="fill:var(--muted)">→ momentum</text>
+<line x1="636" y1="90" x2="636" y2="210" stroke="currentColor" stroke-width="1.5"/>
+<circle cx="636" cy="210" r="9" style="fill:var(--surface)" stroke="currentColor" stroke-width="1.5"/>
+<line x1="627" y1="210" x2="645" y2="210" stroke="currentColor" stroke-width="1.5"/><line x1="636" y1="201" x2="636" y2="219" stroke="currentColor" stroke-width="1.5"/>
+<circle cx="636" cy="90" r="4.5" fill="currentColor"/>
+<text x="636" y="302" text-anchor="middle" font-size="11" style="fill:var(--muted)">trend</text><text x="636" y="316" text-anchor="middle" font-size="11" style="fill:var(--muted)">→ reversal</text>
+<rect x="682" y="74" width="36" height="212" rx="4" style="fill:var(--surface)" stroke="currentColor" stroke-width="1.3"/>
+<text x="700" y="180" text-anchor="middle" font-size="12" transform="rotate(-90 700 180)" style="font-family:var(--font-mono)">measure</text>
+<line x1="718" y1="180" x2="746" y2="180" stroke="currentColor" stroke-width="1.5" marker-end="url(#qarr)"/>
+<text x="752" y="176" font-size="13.5" font-weight="700">up /</text><text x="752" y="193" font-size="13.5" font-weight="700">down</text>
+<g style="color:var(--accent)"><path d="M700,286 V340 H284 V288" fill="none" stroke="currentColor" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#qarrA)"/><text x="492" y="360" text-anchor="middle" font-size="12.5" font-weight="600" fill="currentColor">5 · Learn: a classical optimizer (Nelder-Mead) tunes w₀–w₃ for accuracy</text></g>
+</svg>
+          </div>
+          <figcaption>Each market factor gets its own qubit. Its features are weighted into a rotation angle (θ = w × features), entanglement gates let factors influence one another, and this encode-and-connect layer repeats six times before the circuit is measured for the up/down prediction. A classical optimizer then tunes the weights, which makes the model hybrid.</figcaption>
+        </figure>
+        <ul>
+          <li>Designed a feature-encoding scheme in Qiskit that maps financial indicators such as volume and VIX into quantum states with rotation-Y (RY) gates.</li>
+          <li>Built entanglement-based dependencies between market factors to capture non-linear relationships.</li>
+          <li>Obtained the circuit parameters with classical optimization.</li>
+        </ul>
+        <p class="result"><span><b>~70%</b> average monthly accuracy on daily up/down predictions over 10 months (July 2025 to April 2026), with highs of <b>~85%</b> in November 2025 and <b>87.7%</b> in April 2026</span></p>
+        <p class="more"><a href="https://github.com/AstalaxmiD/Hybrid-Quantum-Model-for-Financial-Prediction" target="_blank" rel="noopener">Code on GitHub</a></p>
+
+        <div class="skillrow"><span>skills</span><ul class="tags" aria-label="Skills"><li>Python</li><li>Qiskit</li><li>Quantum Machine Learning &amp; Computing</li><li>Feature Engineering</li><li>Pandas</li><li>Model Evaluation</li></ul></div>
+      </article>
+
+      <article class="entry">
+        <header>
+          <h3>USDT&ndash;ETH Solidity Trading Smart Contract</h3>
+          <p class="meta">Solidity · Chainlink · Uniswap · MetaMask</p>
+        </header>
+        <p class="context">A smart contract that automatically sells ETH for USDT when its price falls, to protect people and businesses that accept ETH payments from sharp losses.</p>
+        <figure class="qfig">
+          <div class="qfig-title">how the sandwich attack is blocked</div>
+          <div class="qfig-hint" aria-hidden="true">swipe to see the full diagram &rarr;</div>
+          <div class="qfig-scroll">
+<svg viewBox="0 0 820 424" role="img" aria-label="Sandwich attack, two cases. If the minimum output is computed from the Uniswap pool price, the floor falls with the attacker's trade and the swap fills at the manipulated price. If it is computed from Chainlink, the floor stays at 2,970 dollars, the manipulated swap would return 2,900, and it reverts." fill="currentColor" style="color:var(--fg);font-family:var(--font-display)">
+<line x1="330" y1="22" x2="330" y2="392" style="stroke:var(--line)" stroke-dasharray="2 4"/>
+<line x1="490" y1="22" x2="490" y2="392" style="stroke:var(--line)" stroke-dasharray="2 4"/>
+<line x1="650" y1="22" x2="650" y2="392" style="stroke:var(--line)" stroke-dasharray="2 4"/>
+<text x="260" y="28" text-anchor="middle" font-size="12" font-weight="600" style="fill:var(--muted)">before</text>
+<text x="410" y="28" text-anchor="middle" font-size="12" font-weight="600" >1 · attacker sells ETH first</text>
+<text x="410" y="44" text-anchor="middle" font-size="11" font-style="italic" style="fill:var(--muted)">pushes the pool price down</text>
+<text x="570" y="28" text-anchor="middle" font-size="12" font-weight="600" >2 · your swap runs</text>
+<text x="570" y="44" text-anchor="middle" font-size="11" font-style="italic" style="fill:var(--muted)">checked against its floor</text>
+<text x="728" y="28" text-anchor="middle" font-size="12" font-weight="600" >3 · attacker buys ETH back</text>
+<text x="728" y="44" text-anchor="middle" font-size="11" font-style="italic" style="fill:var(--muted)">pockets the gap</text>
+<text x="20" y="102" font-size="13" font-weight="700" >Floor from</text>
+<text x="20" y="119" font-size="13" font-weight="700" >the pool price</text>
+<text x="20" y="138" font-size="11" font-style="italic" style="fill:var(--muted)">the attacker can move it</text>
+<line x1="190" y1="75.5" x2="800" y2="75.5" stroke="currentColor" stroke-opacity="0.35" stroke-width="1.2" stroke-dasharray="1 3"/>
+<text x="420" y="69.5" font-size="11" style="fill:var(--muted)">Chainlink $3,000</text>
+<path d="M190,98.0 H380 L410,172.2 H700 L730,98.0 H800" fill="none" stroke="currentColor" stroke-opacity="0.6" stroke-width="1.6" stroke-dasharray="6 4"/>
+<text x="420" y="187.2" font-size="11" style="fill:var(--muted)">floor = pool &#8722; 1% = $2,871</text>
+<path d="M190,75.5 H380 L410,150.5 H700 L730,75.5 H800" fill="none" stroke="currentColor" stroke-width="2.2"/>
+<text x="420" y="144.5" font-size="11" font-weight="600">pool $2,900</text>
+<circle class="sw-pulse" cx="570" cy="150.5" r="7" fill="none" stroke="currentColor" stroke-width="1.5"/>
+<circle cx="570" cy="150.5" r="6" fill="currentColor"/>
+<text x="580" y="141.5" font-size="11.5" font-weight="700">fills at $2,900</text>
+<path d="M545,78.5 V142.5 M540,78.5 H550 M540,142.5 H550" fill="none" stroke="currentColor" stroke-width="1.2"/>
+<text x="537" y="117.0" text-anchor="end" font-size="11.5" font-weight="700">&#8776; $100 lost</text>
+<text x="190" y="208" font-size="12" font-weight="700" >Your ETH sells at the manipulated price, and the attacker keeps the difference.</text>
+<line x1="20" y1="226" x2="800" y2="226" style="stroke:var(--line)"/>
+<text x="20" y="288" font-size="13" font-weight="700" style="fill:var(--accent)">Floor from</text>
+<text x="20" y="305" font-size="13" font-weight="700" style="fill:var(--accent)">Chainlink</text>
+<text x="20" y="324" font-size="11" font-style="italic" style="fill:var(--muted)">your contract</text>
+<line x1="190" y1="261.5" x2="800" y2="261.5" stroke="currentColor" stroke-opacity="0.35" stroke-width="1.2" stroke-dasharray="1 3"/>
+<text x="420" y="255.5" font-size="11" style="fill:var(--muted)">Chainlink $3,000</text>
+<line x1="190" y1="284.0" x2="800" y2="284.0" style="stroke:var(--accent)" stroke-width="1.8" stroke-dasharray="6 4"/>
+<text x="420" y="278.0" font-size="11" font-weight="600" style="fill:var(--accent)">floor = Chainlink &#8722; 1% = $2,970</text>
+<path d="M190,261.5 H380 L410,336.5 H700 L730,261.5 H800" fill="none" stroke="currentColor" stroke-width="2.2"/>
+<text x="420" y="351.5" font-size="11" font-weight="600">pool $2,900</text>
+<circle class="sw-pulse" cx="570" cy="336.5" r="8" fill="none" style="stroke:var(--accent)" stroke-width="1.5"/>
+<path d="M564,330.5 L576,342.5 M576,330.5 L564,342.5" style="stroke:var(--accent)" stroke-width="2.6" stroke-linecap="round"/>
+<text x="580" y="356.5" font-size="11.5" font-weight="700" style="fill:var(--accent)">reverts</text>
+<path d="M545,287.0 V327.5 M540,287.0 H550 M540,327.5 H550" fill="none" style="stroke:var(--accent)" stroke-width="1.2"/>
+<text x="537" y="314.25" text-anchor="end" font-size="11.5" font-weight="700" style="fill:var(--accent)">$70 under the floor</text>
+<text x="190" y="394" font-size="12" font-weight="700" style="fill:var(--accent)">The swap reverts: the attack fails and no ETH is sold at a manipulated price.</text>
+</svg>
+          </div>
+          <figcaption>Example: selling 1 ETH with a 1% slippage tolerance. A sandwich bot sees the pending swap, sells ETH just before it to push the Uniswap price down, and buys back right after. A minimum output taken from the pool price falls with the attack, so the swap still fills. This contract takes the floor from Chainlink, which a trade cannot move, so the manipulated swap reverts; the pool price is only a sanity check.</figcaption>
+        </figure>
+        <ul>
+          <li>Checks the Chainlink price feed on a time-based trigger (every 24 hours by default, configurable to hourly) and swaps ETH for USDT on Uniswap when the price falls 5% below the purchase price.</li>
+          <li>Protects each swap against sandwich attacks by setting its minimum output from the Chainlink price minus a slippage tolerance, with the Uniswap pool price used only as a sanity check.</li>
+          <li>Developed and tested with MetaMask on the Ethereum testnet and mainnet.</li>
+        </ul>
+
+        <div class="skillrow"><span>skills</span><ul class="tags" aria-label="Skills"><li>Blockchain Technology</li><li>Chainlink Oracles</li><li>Software Testing &amp; Debugging</li></ul></div>
+      </article>
+
+      <article class="entry">
+        <header>
+          <h3>Government Scheme Eligibility Checker</h3>
+          <p class="meta">Independent project, 2021 to 2023 · Python · PyWebIO · MySQL</p>
+        </header>
+        <p class="context">A Python web application that gives each user a curated list of the Indian government schemes they are eligible for.</p>
+        <figure class="qfig">
+          <div class="qfig-title">sample eligibility rule</div>
+          <div class="qfig-hint" aria-hidden="true">swipe to see the full rule &rarr;</div>
+          <div class="qfig-scroll">
+<svg viewBox="0 0 830 224" role="img" aria-label="Sample eligibility rule: a user qualifies for the Promoting Innovations in Individuals, Startups and MSMEs Scheme only if they are 18 or older, employed, a citizen, and interested in business; failing any check skips the scheme." fill="currentColor" style="color:var(--fg);font-family:var(--font-display)">
+<defs><marker id="garr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker><marker id="garrA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse" style="color:var(--accent)"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker></defs>
+<rect x="20" y="36" width="130" height="64" rx="8" style="fill:var(--surface)" stroke="currentColor" stroke-opacity="0.6" stroke-width="1.4"/>
+<text x="85.0" y="58" text-anchor="middle" font-size="12.5" font-weight="700">Age 18 or over?</text>
+<text x="85.0" y="76" text-anchor="middle" font-size="10.5" style="fill:var(--muted);font-family:var(--font-mono)">age >= 18</text>
+<path d="M85.0,100 V164" fill="none" stroke="currentColor" stroke-opacity="0.7" stroke-width="1.4" marker-end="url(#garr)"/>
+<text x="92.0" y="134" font-size="11" font-style="italic" style="fill:var(--muted)">no</text>
+<path d="M150,68.0 H178" fill="none" stroke="currentColor" stroke-width="1.5" marker-end="url(#garr)"/>
+<text x="165" y="62.0" text-anchor="middle" font-size="11" font-style="italic" style="fill:var(--muted)">yes</text>
+<rect x="180" y="36" width="130" height="64" rx="8" style="fill:var(--surface)" stroke="currentColor" stroke-opacity="0.6" stroke-width="1.4"/>
+<text x="245.0" y="58" text-anchor="middle" font-size="12.5" font-weight="700">Employed?</text>
+<text x="245.0" y="76" text-anchor="middle" font-size="10.5" style="fill:var(--muted);font-family:var(--font-mono)">job == "yes"</text>
+<path d="M245.0,100 V164" fill="none" stroke="currentColor" stroke-opacity="0.7" stroke-width="1.4" marker-end="url(#garr)"/>
+<text x="252.0" y="134" font-size="11" font-style="italic" style="fill:var(--muted)">no</text>
+<path d="M310,68.0 H338" fill="none" stroke="currentColor" stroke-width="1.5" marker-end="url(#garr)"/>
+<text x="325" y="62.0" text-anchor="middle" font-size="11" font-style="italic" style="fill:var(--muted)">yes</text>
+<rect x="340" y="36" width="130" height="64" rx="8" style="fill:var(--surface)" stroke="currentColor" stroke-opacity="0.6" stroke-width="1.4"/>
+<text x="405.0" y="58" text-anchor="middle" font-size="12.5" font-weight="700">Citizen?</text>
+<text x="405.0" y="76" text-anchor="middle" font-size="10.5" style="fill:var(--muted);font-family:var(--font-mono)">citizen == "yes"</text>
+<path d="M405.0,100 V164" fill="none" stroke="currentColor" stroke-opacity="0.7" stroke-width="1.4" marker-end="url(#garr)"/>
+<text x="412.0" y="134" font-size="11" font-style="italic" style="fill:var(--muted)">no</text>
+<path d="M470,68.0 H498" fill="none" stroke="currentColor" stroke-width="1.5" marker-end="url(#garr)"/>
+<text x="485" y="62.0" text-anchor="middle" font-size="11" font-style="italic" style="fill:var(--muted)">yes</text>
+<rect x="500" y="36" width="150" height="64" rx="8" style="fill:var(--surface)" stroke="currentColor" stroke-opacity="0.6" stroke-width="1.4"/>
+<text x="575.0" y="58" text-anchor="middle" font-size="12.5" font-weight="700">Business interest?</text>
+<text x="575.0" y="76" text-anchor="middle" font-size="10.5" style="fill:var(--muted);font-family:var(--font-mono)">'business' or 'all'</text>
+<text x="575.0" y="89" text-anchor="middle" font-size="10.5" style="fill:var(--muted);font-family:var(--font-mono)">in info['business1']</text>
+<path d="M575.0,100 V164" fill="none" stroke="currentColor" stroke-opacity="0.7" stroke-width="1.4" marker-end="url(#garr)"/>
+<text x="582.0" y="134" font-size="11" font-style="italic" style="fill:var(--muted)">no</text>
+<path d="M650,68.0 H670" fill="none" style="stroke:var(--accent)" stroke-width="1.6" marker-end="url(#garrA)"/>
+<text x="661" y="62.0" text-anchor="middle" font-size="11" font-style="italic" style="fill:var(--accent)">yes</text>
+<rect x="672" y="22" width="146" height="92" rx="8" style="fill:var(--accent-soft);stroke:var(--accent)" stroke-width="1.5"/>
+<text x="745" y="44" text-anchor="middle" font-size="13" font-weight="700" style="fill:var(--accent)">&#10003; Eligible</text>
+<text x="745" y="62" text-anchor="middle" font-size="11">Promoting Innovations in</text>
+<text x="745" y="76" text-anchor="middle" font-size="11">Individuals, Startups and</text>
+<text x="745" y="90" text-anchor="middle" font-size="11">MSMEs Scheme</text>
+<text x="745" y="134" text-anchor="middle" font-size="11" font-style="italic" style="fill:var(--accent)">added to the list + PDF</text>
+<rect x="20" y="166" width="610" height="40" rx="8" style="fill:var(--bg)" stroke="currentColor" stroke-opacity="0.45" stroke-width="1.2" stroke-dasharray="5 4"/>
+<text x="325" y="191" text-anchor="middle" font-size="12">Not eligible for this scheme <tspan style="fill:var(--muted)">&#8594; the checker moves on to the next scheme</tspan></text>
+</svg>
+          </div>
+          <figcaption>One of the checker's rules, simplified. The app asks each user a few questions, then runs a rule like this for every scheme: if all the conditions hold, the scheme is added to the user's list and their PDF.</figcaption>
+        </figure>
+        <ul>
+          <li>Aims to bridge the communication divide between citizens and government support programs, ensuring inclusivity and facilitating informed decision-making.</li>
+          <li>Provides a user-friendly interface that contributes to a more transparent and accessible system.</li>
+          <li>Generates a PDF of each user's eligible schemes with FPDF.</li>
+          <li>Displays a graph of how many users qualify for each scheme, using Matplotlib, pandas and a MySQL database.</li>
+          <li>Included test cases for edge-case inputs.</li>
+        </ul>
+        <p class="result"><span><b>200+</b> users found and applied for schemes in its first six months</span></p>
+        <p class="more"><a href="https://government-scheme-eligibility-checker.onrender.com" target="_blank" rel="noopener">Live app</a> · <a href="https://github.com/AstalaxmiD/Government-Scheme-Eligibility-Checker" target="_blank" rel="noopener">Code on GitHub</a></p>
+
+        <div class="skillrow"><span>skills</span><ul class="tags" aria-label="Skills"><li>Python</li><li>SQL</li><li>Database Design (SQL)</li><li>Pandas</li><li>Matplotlib</li><li>Data Analytics</li><li>Software Testing &amp; Debugging</li></ul></div>
+      </article>
+
+    </div>
+  </section>
+  </div>
+
+  <div class="panel" id="panel-experience">
+  <section class="section" aria-labelledby="teach-h">
+    <h2 class="label" id="teach-h">Work experience</h2>
+    <div class="body">
+      <article class="entry">
+        <header>
+          <h3>Undergraduate TA, Algorithms and Data Structures 1</h3>
+          <p class="meta">CS 0445 · University of Pittsburgh · Aug 2026 to present</p>
+        </header>
+        <ul>
+          <li>Live-code data structure problems in recitation, building each solution step by step in a starter workbook that students fill in alongside.</li>
+          <li>Review the professor's lecture material each week and turn it into visual presentations that break down difficult data structures and algorithms concepts, such as recursion, heaps and linked lists.</li>
+        </ul>
+        <p class="result"><span>The presentations received positive feedback from students and the professor</span></p>
+      </article>
+
+      <article class="entry">
+        <header>
+          <h3>Undergraduate TA, Discrete Structures for Computer Science</h3>
+          <p class="meta">CS 0441 · University of Pittsburgh · Aug 2024 to Apr 2026</p>
+        </header>
+        <ul>
+          <li>Facilitated weekly review sessions and office hours for 45+ students, giving targeted, concept-focused support on topics such as propositional and predicate logic.</li>
+          <li>Designed worksheets and practice problems, and added optional challenge problems and guided walkthroughs for students at different levels.</li>
+          <li>Collected and analyzed student feedback to find recurring difficulties, and revised materials and explanations in response.</li>
+        </ul>
+        <p class="result"><span>Recitation participation rose by over <b>20%</b></span></p>
+      </article>
+    </div>
+  </section>
+  </div>
+
+  <footer class="funfact">
+    <svg class="chase" id="chase" viewBox="0 0 880 86" role="img" aria-label="Animation: a chicken chases a stick figure across the page and pushes it off the edge." fill="currentColor" style="color:var(--fg)">
+      <line id="ch-ground" x1="0" y1="76" x2="880" y2="76" style="stroke:var(--line)" stroke-width="2" stroke-dasharray="6 6"/>
+      <g id="ch-runner">
+        <g stroke="currentColor" stroke-width="2.4" stroke-linecap="round" fill="none">
+          <g id="ch-leg-a"><line x1="0" y1="0" x2="0" y2="19"/></g>
+          <g id="ch-leg-b"><line x1="0" y1="0" x2="0" y2="19"/></g>
+          <line x1="0" y1="0" x2="3" y2="-17"/>
+          <g transform="translate(2,-13)"><g id="ch-arm-a"><line x1="0" y1="0" x2="0" y2="11"/></g></g>
+          <g transform="translate(2,-13)"><g id="ch-arm-b"><line x1="0" y1="0" x2="0" y2="11"/></g></g>
+          <circle cx="5" cy="-25" r="7" style="fill:var(--surface)"/>
+        </g>
+      </g>
+      <g id="ch-chicken">
+        <g transform="translate(-19,-54)">
+          <path d="M6,40 Q4,26 16,24 Q20,14 27,17 Q31,20 28,26 Q36,30 34,42 Q30,50 18,50 Q8,50 6,40 Z" style="fill:var(--surface)" stroke="currentColor" stroke-width="2"/>
+          <path d="M22,15 Q24,9 27,13 Q29,9 31,14 Q30,17 27,16 Z" fill="#d9483b"/>
+          <path d="M31,20.5 L38,22.5 L31,23.5 Z" fill="#e8a23a"/>
+          <circle cx="27" cy="20" r="1.4" fill="currentColor"/>
+          <g transform="translate(12,34)"><path id="ch-wing" d="M0,0 Q6,-6 12,2 Q6,6 0,0 Z" style="fill:var(--line)" stroke="currentColor" stroke-width="1.4"/></g>
+          <g stroke="#e8a23a" stroke-width="2" stroke-linecap="round"><line id="ch-cfoot-a" x1="16" y1="50" x2="14" y2="54"/><line id="ch-cfoot-b" x1="22" y1="50" x2="24" y2="54"/></g>
+        </g>
+      </g>
+    </svg>
+    <p><span>fun fact</span>I've built guardrails for robots, unfortunately not for chickens. Why chickens? Ask me about the one that chased me across a field.</p>
+  </footer>
+
+</div>
+
+
+<dialog class="cvdlg" id="cv-viewer" aria-label="Curriculum vitae">
+  <div class="cvbar">
+    <span class="cvtitle">curriculum vitae</span>
+    <span class="cvactions">
+      <button type="button" class="cvbtn" id="cv-dl" hidden>Download PDF</button>
+      <a class="cvbtn" id="cv-dl-link" href="Astalaxmi_Dhanaseelan_CV.pdf" download hidden>Download PDF</a>
+      <button type="button" class="cvbtn" id="cv-close">Close</button>
+    </span>
+  </div>
+  <p class="cvmsg" id="cv-msg" hidden></p>
+  <div class="cvpages">
+    <img src="cv/cv-1.png" width="1242" height="1756" alt="CV, page 1 of 3: education, relevant coursework, research experience">
+    <img src="cv/cv-2.png" width="1242" height="1756" alt="CV, page 2 of 3: research experience, publications, work experience, projects" loading="lazy">
+    <img src="cv/cv-3.png" width="1242" height="1756" alt="CV, page 3 of 3: projects, technical skills, languages, honours" loading="lazy">
+  </div>
+</dialog>
+
+<script>
+(function () {
+  var dlg = document.getElementById("cv-viewer");
+  var dl = document.getElementById("cv-dl");
+  var msg = document.getElementById("cv-msg");
+  function openCv(e) {
+    e.preventDefault();
+    if (dlg.showModal) dlg.showModal(); else dlg.setAttribute("open", "");
+  }
+  function closeCv() { if (dlg.close) dlg.close(); else dlg.removeAttribute("open"); }
+  document.querySelectorAll("[data-cv]").forEach(function (a) { a.addEventListener("click", openCv); });
+  document.getElementById("cv-close").addEventListener("click", closeCv);
+  dlg.addEventListener("click", function (e) { if (e.target === dlg) closeCv(); });
+  if (window.claude && window.claude.use) {
+    window.claude.use("downloads").then(function (downloads) {
+      if (!downloads) return;
+      dl.hidden = false;
+      dl.addEventListener("click", function () {
+        msg.hidden = true;
+        fetch("Astalaxmi_Dhanaseelan_CV.pdf")
+          .then(function (r) { if (!r.ok) throw { code: "unavailable" }; return r.blob(); })
+          .then(function (blob) { return downloads.save({ filename: "Astalaxmi_Dhanaseelan_CV.pdf", data: blob }); })
+          .catch(function (err) {
+            var code = err && err.code;
+            if (code === "declined") return;
+            if (code === "rate_limited") { msg.textContent = "A save prompt is already open."; msg.hidden = false; return; }
+            dl.hidden = true;
+            msg.textContent = "Downloading isn\u2019t available here, but the full CV is below.";
+            msg.hidden = false;
+          });
+      });
+    }).catch(function () {});
+  } else {
+    document.getElementById("cv-dl-link").hidden = false;
+  }
+})();
+</script>
+
+<script>
+(function () {
+  var names = ["about", "research", "projects", "experience"];
+  var nav = document.querySelector(".tabs");
+  var links = nav.querySelectorAll("a");
+  function show(name, scroll) {
+    names.forEach(function (n) { document.getElementById("panel-" + n).hidden = (n !== name); });
+    links.forEach(function (a) {
+      if (a.getAttribute("href") === "#" + name) a.setAttribute("aria-current", "page");
+      else a.removeAttribute("aria-current");
+    });
+    if (scroll) {
+      var top = nav.getBoundingClientRect().top + window.scrollY;
+      if (window.scrollY > top) window.scrollTo(0, top);
+    }
+  }
+  function route(initial) {
+    var h = location.hash.slice(1);
+    if (names.indexOf(h) >= 0) show(h, !initial);
+    else if (initial) show("about", false);
+  }
+  window.addEventListener("hashchange", function () { route(false); });
+  route(true);
+})();
+</script>
+
+<script>
+(function () {
+  var svg = document.getElementById("chase");
+  if (!svg) return;
+  var $ = function (id) { return document.getElementById(id); };
+  var runner = $("ch-runner"), legA = $("ch-leg-a"), legB = $("ch-leg-b"), armA = $("ch-arm-a"), armB = $("ch-arm-b");
+  var chicken = $("ch-chicken"), wing = $("ch-wing"), footA = $("ch-cfoot-a"), footB = $("ch-cfoot-b"), ground = $("ch-ground");
+  var GROUND = 76, HIP = GROUND - 19, SPEED = 95;
+  var W = 880, P = {};
+  function plan() {
+    W = Math.max(300, Math.round(svg.getBoundingClientRect().width) || 880);
+    svg.setAttribute("viewBox", "0 0 " + W + " 86");
+    ground.setAttribute("x2", W);
+    P.stop = W * 0.86;                       /* where the chicken catches up */
+    P.run = (P.stop + 40) / SPEED;           /* chase */
+    P.push = P.run + 0.45;                   /* lunge */
+    P.fly = P.push + 0.9;                    /* pushed off the edge */
+    P.exit = P.fly + (W - P.stop + 60) / 140 + 0.4;   /* chicken struts off */
+    P.T = P.exit + 0.6;
+  }
+  function ease(u) { u = Math.max(0, Math.min(1, u)); return u * u * (3 - 2 * u); }
+  function frame(t) {
+    var rx, ry = 0, rr = 0, cx, lean = 0, flying = false;
+    if (t < P.run) {
+      rx = -40 + (P.stop + 40) * (t / P.run);
+      cx = rx - (95 - 75 * (t / P.run));
+    } else if (t < P.push) {
+      var u = ease((t - P.run) / (P.push - P.run));
+      rx = P.stop; cx = P.stop - 20 + 8 * u; lean = 24 * Math.sin(u * Math.PI);
+    } else if (t < P.fly) {
+      var v = (t - P.push) / (P.fly - P.push); flying = true;
+      rx = P.stop + (W - P.stop + 80) * ease(v); ry = -46 * Math.sin(v * Math.PI) + 10 * v; rr = 110 * v;
+      cx = P.stop - 12;
+    } else {
+      rx = W + 200; flying = true;
+      cx = P.stop - 12 + (W - P.stop + 60) * ease((t - P.fly) / (P.exit - P.fly));
+    }
+    runner.setAttribute("transform", "translate(" + rx + "," + (HIP + ry) + ") rotate(" + rr + ")");
+    var sw = Math.sin(t * 13);
+    var la = flying ? 45 : 38 * sw, lb = flying ? -45 : -38 * sw, aa = flying ? 150 : -45 * sw, ab = flying ? -150 : 45 * sw;
+    legA.setAttribute("transform", "rotate(" + la + ")"); legB.setAttribute("transform", "rotate(" + lb + ")");
+    armA.setAttribute("transform", "rotate(" + aa + ")"); armB.setAttribute("transform", "rotate(" + ab + ")");
+    var bob = -2.5 * Math.abs(Math.sin(t * 13));
+    chicken.setAttribute("transform", "translate(" + cx + "," + (GROUND + bob) + ") rotate(" + lean + ")");
+    var pushing = t >= P.run && t < P.fly;
+    wing.setAttribute("transform", "rotate(" + (pushing ? Math.sin(t * 60) * 30 : Math.sin(t * 26) * 14) + ")");
+    var step = Math.sin(t * 13) * 3;
+    footA.setAttribute("x2", 14 + step); footB.setAttribute("x2", 24 - step);
+    svg.style.opacity = t < 0.3 ? t / 0.3 : (t > P.exit ? Math.max(0, 1 - (t - P.exit) / 0.6) : 1);
+  }
+  plan();
+  window.addEventListener("resize", plan);
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reduce) { frame(P.run * 0.55); svg.style.opacity = 1; return; }
+  var visible = true, start = null, raf = 0;
+  function loop(now) {
+    if (start === null) start = now;
+    frame(((now - start) / 1000) % P.T);
+    raf = visible ? requestAnimationFrame(loop) : 0;
+  }
+  if ("IntersectionObserver" in window) {
+    new IntersectionObserver(function (entries) {
+      visible = entries[0].isIntersecting;
+      if (visible && !raf) raf = requestAnimationFrame(loop);
+    }).observe(svg);
+  }
+  frame(0);
+  raf = requestAnimationFrame(loop);
+})();
+</script>
+</body>
+</html>
